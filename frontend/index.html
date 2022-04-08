@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>DAO Factory</title>
+  </head>
+  <body>
+    <!-- TOP NAVIGATION -->
+    <nav>
+      <!-- <p class="greeting">Fill Out Form to Get Started</p>
+      <form class="login">
+        <input
+          type="text"
+          placeholder="username"
+          class="login__input login__input--user"
+        />
+        <input
+          type="text"
+          placeholder="password"
+          class="login__input login__input--password"
+        />
+        <button class="login__btn">&rarr;</button>
+      </form> -->
+    </nav>
+    <main class="app">
+      <div class="containerForm">
+        <h1>Sign Up</h1>
+        <form class="inputForm" action="signup.html" method="post" id="signup">
+          <div class="field">
+            <label for="Name"></label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter Full Name *"
+              required="required"
+            />
+            <small></small>
+          </div>
+          <div class="field">
+            <label for="Email"></label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              placeholder="Enter Email Address *"
+              required="required"
+            />
+            <small></small>
+          </div>
+          <div class="field">
+            <label for="Token"></label>
+            <input
+              type="text"
+              id="token"
+              name="token"
+              placeholder="Enter Token Name *"
+              required="required"
+            />
+            <small></small>
+          </div>
+          <div class="field">
+            <label for="Total Supply"></label>
+            <input
+              type="text"
+              id="supply"
+              name="supply"
+              placeholder="Enter Total Supply *"
+              required="required"
+            />
+            <small></small>
+          </div>
+
+          <div class="field">
+            <label for="Is Minting Live"></label>
+            <input
+              type="text"
+              id="mintLive"
+              name="mintLive"
+              placeholder="Y/N is Minting Live *"
+              required="required"
+            />
+            <small></small>
+          </div>
+          <!--<div class="field">
+            <p>Is Minting Live</p>
+            <select>
+              <option selected value="" disabled selected></option>
+              <option value="minting-live">Yes</option>
+              <option value="minting-notLive">No</option>
+            </select>
+          </div>-->
+
+          <div class="field">
+            <button type="submit" class="btn btn-primary btn-block btn-large">
+              Submit Sign Up
+            </button>
+            <small></small>
+          </div>
+        </form>
+      </div>
+    </main>
+    <a href="html/factory.html"></a>
+    <a href="html/DAOdash.html"></a>
+    <script src="script.js"></script>
+  </body>
+</html>
