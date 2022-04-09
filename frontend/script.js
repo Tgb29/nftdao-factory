@@ -14,6 +14,8 @@ const inputImageURL = document.getElementById('imageurl');
 const inputPercVote = document.getElementById('passingPercent');
 const inputNFTs = document.getElementById('topropose');
 const select = document.querySelector('select');
+const subBtn = document.getElementById('sub');
+const proposalBtn = document.getElementById('p1');
 //Initial Data Storage
 const DAOs = [];
 
@@ -40,12 +42,34 @@ function storeSignUp() {
   DAOs.push(newCollection);
 }
 
+function myFunction() {
+  console.log('heard');
+}
 //Event handler for Submit sign up
 
 //Handler
+//Create
 createBtn.addEventListener('click', function (e) {
   e.preventDefault();
   storeSignUp();
   console.log(DAOs);
-  ethereum.request({ method: 'eth_requestAccounts' });
+  //   ethereum.request({ method: 'eth_requestAccounts' });
 });
+
+// //Manage
+// subBtn.addEventListener('click', function () {
+//   //   e.preventDefault();
+//   const ele = document.getElementsByTagName('input');
+//   for (let i = 0; i < ele.length; i++) {
+//     if ((ele[i].type = 'radio' && ele[i].checked)) {
+//       location.href = `${ele[i].id}.html`;
+//     }
+//   }
+
+//   //   location.href = 'proposal.html';
+//   console.log('click heard');
+// });
+// // //Proposal
+// proposalBtn.addEventListener('click', function () {
+//   console.log('your stupid');
+// });

@@ -23,33 +23,26 @@
     <!-- Main Application -->
     <main class="app"></main>
     <h1>NFT DAO Factory</h1>
-
-    <!-- Page State Toggle -->
     <div class="container">
-      <h2 id="question">Which would you like to submit:</h2>
+      <h2 id="question">Vote based on Current Proposal</h2>
       <ul>
         <li>
-          <input type="radio" id="proposal" name="selector" value="createProposal">
-          <label for="proposal">Proposal</label>
+          <input type="radio" id="yes" name="selector" value="yes">
+          <label for="yes">Yes</label>
           
           <div class="check"></div>
         </li>
         
         <li>
-          <input type="radio" id="vote" name="selector" value="userVote">
-          <label for="vote">Vote</label>
+          <input type="radio" id="no" name="selector" value="no">
+          <label for="no">No</label>
           
           <div class="check"><div class="inside"></div></div>
         </li>
-        <button  class="btn btn-primary btn-block btn-large" id="sub">
+        <button  class="btn btn-primary btn-block btn-large" id="subVote">
             Submit
           </button>
     </div>
-    <!-- <br />
-    <h2 id="heading">List of NFT Collections</h2>
-    <select class="input_field" name="address" id="addres"></select>
-    <br /><br /> -->
-    <script src="manage.js"></script>
-    <a href="proposal.html"></a>
+    <script src="vote.js"></script>
   </body>
 </html>

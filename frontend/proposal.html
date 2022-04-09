@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>DAOdash</title>
+  </head>
+  <body>
+    <!-- TOP NAVIGATION -->
+    <nav>
+      <a href="/index.html" class="button-link" id="factory">Create</a>
+      <a href="/discover.html" class="button-link" id="discover">Discover</a>
+      <a href="/manage.html" class="button-link" id="manage"> Manage </a>
+    </nav>
+
+    <!-- Main Application -->
+    <main class="app"></main>
+    <h1>NFT DAO Factory</h1>
+    <h3>Amount of Money to be Distributed</h3>
+    <div class="field">
+      <label for="proposalMoney"></label>
+      <input
+        type="number"
+        id="proposalMoney"
+        name="proposalMoney"
+        placeholder="Money in ETH*"
+        required="required"
+      />
+      <small></small>
+    </div>
+    <h3>What is the Money Used For</h3>
+    <div class="field">
+      <label for="moneyUse"></label>
+      <input
+        type="text"
+        id="moneyUse"
+        name="moneyUse"
+        placeholder="Brief Description*"
+        required="required"
+      />
+      <small></small>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block btn-large" id="prop">
+      Submit Proposal
+    </button>
+    <script src="proposal.js"></script>
+  </body>
+</html>
