@@ -6,35 +6,49 @@
 //---Dropdowns where applicable---token name, minting live
 
 //Initial Data Storage
-const accounts = [];
-function newUserForm(name, email, token, supply, mintLive) {
-  this.name = name;
-  this.email = email;
-  this.token = token;
+const DAOs = [];
+function newDAO(
+  collection,
+  symbol,
+  supply,
+  description,
+  image,
+  percVotes,
+  numNFT
+) {
+  this.collection = collection;
+  this.symbol = symbol;
   this.supply = supply;
-  this.mintLive = mintLive;
+  this.description = description;
+  this.image = image;
+  this.percVotes = percVotes;
+  this.numNFT = numNFT;
 }
 function storeSignUp() {
-  let newAccount = new newUserForm(
-    inputName.value,
-    inputEmail.value,
-    inputToken.value,
+  let newCollection = newDAO(
+    inputNameCollection.value,
+    inputSymbol.value,
     inputTotalSupply.value,
-    inputMinitingLive.value
+    inputDescription.value,
+    inputImageURL.value,
+    inputPercVote.value,
+    inputNFTs.value
   );
-  accounts.push(newAccount);
+  DAOs.push(newCollection);
 }
 
 //Event handler for Submit sign up
-const signupBtn = document.querySelector('.btn-large');
-const inputName = document.getElementById('name');
-const inputEmail = document.getElementById('email');
-const inputToken = document.getElementById('token');
+const createBtn = document.querySelector('.btn-large');
+const inputNameCollection = document.getElementById('name');
+const inputSymbol = document.getElementById('symbol');
 const inputTotalSupply = document.getElementById('supply');
-const inputMinitingLive = document.getElementById('mintLive');
+const inputDescription = document.getElementById('description');
+const inputImageURL = document.getElementById('imageurl');
+const inputPercVote = document.getElementById('passingPercent');
+const inputNFTs = document.getElementById('topropose');
 
 //Handler
-signupBtn.addEventListener('click', function (e) {
+createBtn.addEventListener('click', function (e) {
   e.preventDefault();
   storeSignUp();
   console.log(accounts);

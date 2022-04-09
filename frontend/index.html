@@ -11,68 +11,45 @@
     />
 
     <link rel="stylesheet" href="style.css" />
-    <title>DAO Factory 1</title>
+    <title>DAO Factory</title>
   </head>
   <body>
     <!-- TOP NAVIGATION -->
     <nav>
-      <a href="/create.html" class="button-link" id="factory">Create</a>
+      <a href="/index.html" class="button-link" id="factory">Create</a>
       <a href="/discover.html" class="button-link" id="discover">Discover</a>
-
-      <!-- <p class="greeting">Fill Out Form to Get Started</p>
-      <form class="login">
-        <input
-          type="text"
-          placeholder="username"
-          class="login__input login__input--user"
-        />
-        <input
-          type="text"
-          placeholder="password"
-          class="login__input login__input--password"
-        />
-        <button class="login__btn">&rarr;</button>
-      </form> -->
+      <a href="/manage.html" class="button-link" id="manage"> Manage </a>
     </nav>
+    <!-- Main Application -->
     <main class="app">
       <div class="containerForm">
-        <h1>Sign Up</h1>
-        <form class="inputForm" action="signup.html" method="post" id="signup">
+        <h1>NFT DAO Factory</h1>
+        <h2>Collection Details</h2>
+        <form class="inputForm" action="create.html" method="post" id="create">
           <div class="field">
-            <label for="Name"></label>
+            <label for="collection name"></label>
             <input
               type="text"
               id="name"
               name="name"
-              placeholder="Enter Full Name *"
+              placeholder="Name of Collection *"
               required="required"
             />
             <small></small>
           </div>
           <div class="field">
-            <label for="Email"></label>
+            <label for="symbol"></label>
             <input
               type="text"
-              id="email"
-              name="email"
-              placeholder="Enter Email Address *"
+              id="symbol"
+              name="symbol"
+              placeholder="Token Symbol *"
               required="required"
             />
             <small></small>
           </div>
           <div class="field">
-            <label for="Token"></label>
-            <input
-              type="text"
-              id="token"
-              name="token"
-              placeholder="Enter Token Name *"
-              required="required"
-            />
-            <small></small>
-          </div>
-          <div class="field">
-            <label for="Total Supply"></label>
+            <label for="total supply"></label>
             <input
               type="text"
               id="supply"
@@ -82,38 +59,63 @@
             />
             <small></small>
           </div>
-
+          <h2>NFT Meta Data</h2>
           <div class="field">
-            <label for="Is Minting Live"></label>
+            <label for="description"></label>
             <input
               type="text"
-              id="mintLive"
-              name="mintLive"
-              placeholder="Y/N is Minting Live *"
+              id="description"
+              name="description"
+              placeholder="Description of NFT Collection *"
               required="required"
             />
             <small></small>
           </div>
-          <!--<div class="field">
-            <p>Is Minting Live</p>
-            <select>
-              <option selected value="" disabled selected></option>
-              <option value="minting-live">Yes</option>
-              <option value="minting-notLive">No</option>
-            </select>
-          </div>-->
-
+          <div class="field">
+            <label for="nftimage"></label>
+            <input
+              type="text"
+              id="imageurl"
+              name="imageurl"
+              placeholder="NFT Image Url *"
+              required="required"
+            />
+            <small></small>
+          </div>
+          <h2>DAO Details</h2>
+          <h3>Percentage of Votes needed to Pass Proposal</h3>
+          <div class="field">
+            <label for="passing percent"></label>
+            <input
+              type="text"
+              id="passingPercent"
+              name="passingPercent"
+              placeholder="% of Votes to Pass*"
+              required="required"
+            />
+            <small></small>
+          </div>
+          <h3># of NFTs needed to Create a Proposal to DAO</h3>
+          <div class="field">
+            <label for="#topropose"></label>
+            <input
+              type="text"
+              id="topropose"
+              name="topropose"
+              placeholder="# of NFTs Needed*"
+              required="required"
+            />
+            <small></small>
+          </div>
           <div class="field">
             <button type="submit" class="btn btn-primary btn-block btn-large">
-              Submit Sign Up
+              Create DAO
             </button>
             <small></small>
           </div>
         </form>
       </div>
     </main>
-    <a href="html/factory.html"></a>
-    <a href="html/DAOdash.html"></a>
     <script src="script.js"></script>
   </body>
 </html>
