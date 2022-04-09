@@ -19,6 +19,46 @@ const proposalBtn = document.getElementById('p1');
 //Initial Data Storage
 const DAOs = [];
 
+const factoryAddress = "0x9417CC87002627605075F4BDbab5B85b47c90e1D";
+
+const ethEnabled = async () => {
+  if (window.ethereum) {
+    window.eth_accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    window.web3 = new Web3(window.ethereum);
+    return true;
+  }
+  return false;
+}
+
+ethEnabled().then(enabled => alert("Wallet connected!"));
+
+function sendMethodFactory(contract) {
+  return function sendMethod(methodName, args, verb = "send", callback) {
+    contract.methods[methodName](...args).estimateGas({}, (err, gas) => {
+      const result = contract.methods[methodName](...args)[verb]({ gas });
+      if (callback) {
+        result.then(callback);
+      }
+    });
+
+  };
+}
+
+function factoryContract(callback) {
+  fetch("factory_abi.json").then(response => response.json()).then(abi => {
+    const contract = new web3.eth.Contract(abi, factoryAddress, { from: window.eth_accounts[0] });
+    const sendMethod = sendMethodFactory(contract);
+    callback(contract, sendMethod);
+  });
+}
+
+function createNFTDAO() {
+  factoryContract((_, sendMethod) => {
+    sendMethod("createNFTDAO", ["TEST4", "TST4", 100, 1, 1]);
+  });
+
+}
+
 function newDAO(col, sym, sup, descr, im, per, NFT) {
   this.collection = col;
   this.symbol = sym;
@@ -53,7 +93,8 @@ createBtn.addEventListener('click', function (e) {
   e.preventDefault();
   storeSignUp();
   console.log(DAOs);
-  //   ethereum.request({ method: 'eth_requestAccounts' });
+  //ethereum.request({ method: 'eth_requestAccounts' });
+  createNFTDAO();
 });
 
 // //Manage
