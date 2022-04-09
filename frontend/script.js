@@ -1,4 +1,5 @@
 'use strict';
+import Web3 from 'web3';
 //Tasks
 //1.Form Tasks
 //-Event handler for submit button
@@ -20,6 +21,55 @@ const proposalBtn = document.getElementById('p1');
 const DAOs = [];
 
 const factoryAddress = "0x9417CC87002627605075F4BDbab5B85b47c90e1D";
+
+const abi = [
+  {
+    "inputs": [],
+    "name": "allNFTDAOs",
+    "outputs": [
+      {
+        "internalType": "contract NFTDAO[]",
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_symbol",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_maxSupply",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_totalVotesThreshold",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_proposalThreshold",
+        "type": "uint256"
+      }
+    ],
+    "name": "createNFTDAO",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
 
 const ethEnabled = async () => {
   if (window.ethereum) {
@@ -45,11 +95,10 @@ function sendMethodFactory(contract) {
 }
 
 function factoryContract(callback) {
-  fetch("factory_abi.json").then(response => response.json()).then(abi => {
-    const contract = new web3.eth.Contract(abi, factoryAddress, { from: window.eth_accounts[0] });
-    const sendMethod = sendMethodFactory(contract);
-    callback(contract, sendMethod);
-  });
+  const contract = new web3.eth.Contract(abi, factoryAddress, { from: window.eth_accounts[0] });
+  const sendMethod = sendMethodFactory(contract);
+  callback(contract, sendMethod);
+
 }
 
 function createNFTDAO() {
@@ -96,6 +145,7 @@ createBtn.addEventListener('click', function (e) {
   //ethereum.request({ method: 'eth_requestAccounts' });
   createNFTDAO();
 });
+
 
 // //Manage
 // subBtn.addEventListener('click', function () {
