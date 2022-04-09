@@ -10,28 +10,31 @@ html {
 }
 
 #factory {
+  margin-top: 25px;
   position: absolute;
   right: 0;
-  right: 150px;
-  background-color: #f1ebeb;
-  color: rgb(18, 17, 17);
+  right: 110px;
+  background-color: #000426;
+  color: rgb(230, 230, 238);
   padding: 14px 25px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
 }
 #discover {
+  margin-top: 25px;
   position: absolute;
   right: 0;
-  right: 50px;
-  background-color: #f1ebeb;
-  color: rgb(18, 17, 17);
+  right: 10px;
+  background-color: #000426;
+  color: rgb(252, 245, 245);
   padding: 14px 25px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
 }
 #manage {
+  margin-top: 25px;
   position: absolute;
   left: 0;
   left: 50px;
@@ -103,7 +106,52 @@ body {
     linear-gradient(135deg, #670d10 0%, #092756 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1 );
 }
+/* br {
+  align-content: safe center;
+  position: relative;
+  margin-top: 100px;
+} */
+h1 {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  font-size: 30px;
+}
+#heading {
+  padding-top: 0px;
+  align-content: center;
+  position: relative;
+  left: 25px;
+  margin-bottom: 10px;
+}
+select {
+  background-color: #000426;
+  color: #ffffff;
+  border: 0px;
+  padding: 8px;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 400;
+  height: 50px;
 
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  left: 25px;
+}
+/* .input_field {
+  height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.address {
+  width: 10em;
+} */
 .login {
   position: absolute;
   top: 50%;

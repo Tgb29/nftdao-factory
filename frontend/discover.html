@@ -1,1 +1,37 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>DAOdash</title>
+  </head>
+  <body>
+    <!-- TOP NAVIGATION -->
+    <nav>
+      <a href="/index.html" class="button-link" id="factory">Create</a>
+      <a href="/discover.html" class="button-link" id="discover">Discover</a>
+      <!-- <a href="/manage.html" class="button-link" id="manage"> Manage </a> -->
+    </nav>
+
+    <!-- Main Application -->
+    <main class="app"></main>
+    <h1>NFT DAO Factory</h1>
+    <h2 id="heading">List of NFT Collections</h2>
+    <select id="dropdown" name="collections" required>
+      <option value="" disabled selected hidden>Select NFT Collection</option>
+    </select>
+    <!-- <br />
+    <h2 id="heading">List of NFT Collections</h2>
+    <select class="input_field" name="address" id="addres"></select>
+    <br /><br /> -->
+    <script src="script.js"></script>
+  </body>
+</html>

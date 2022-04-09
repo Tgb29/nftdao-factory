@@ -5,27 +5,30 @@
 //----once button is clicked values in each input field to be stored in new object
 //---Dropdowns where applicable---token name, minting live
 
+const createBtn = document.querySelector('.btn-large');
+const inputNameCollection = document.getElementById('collection');
+const inputSymbol = document.getElementById('symbol');
+const inputTotalSupply = document.getElementById('supply');
+const inputDescription = document.getElementById('description');
+const inputImageURL = document.getElementById('imageurl');
+const inputPercVote = document.getElementById('passingPercent');
+const inputNFTs = document.getElementById('topropose');
+const select = document.querySelector('select');
 //Initial Data Storage
 const DAOs = [];
-function newDAO(
-  collection,
-  symbol,
-  supply,
-  description,
-  image,
-  percVotes,
-  numNFT
-) {
-  this.collection = collection;
-  this.symbol = symbol;
-  this.supply = supply;
-  this.description = description;
-  this.image = image;
-  this.percVotes = percVotes;
-  this.numNFT = numNFT;
+
+function newDAO(col, sym, sup, descr, im, per, NFT) {
+  this.collection = col;
+  this.symbol = sym;
+  this.supply = sup;
+  this.description = descr;
+  this.image = im;
+  this.percVotes = per;
+  this.numNFT = NFT;
 }
+
 function storeSignUp() {
-  let newCollection = newDAO(
+  let newCollection = new newDAO(
     inputNameCollection.value,
     inputSymbol.value,
     inputTotalSupply.value,
@@ -38,19 +41,11 @@ function storeSignUp() {
 }
 
 //Event handler for Submit sign up
-const createBtn = document.querySelector('.btn-large');
-const inputNameCollection = document.getElementById('name');
-const inputSymbol = document.getElementById('symbol');
-const inputTotalSupply = document.getElementById('supply');
-const inputDescription = document.getElementById('description');
-const inputImageURL = document.getElementById('imageurl');
-const inputPercVote = document.getElementById('passingPercent');
-const inputNFTs = document.getElementById('topropose');
 
 //Handler
 createBtn.addEventListener('click', function (e) {
   e.preventDefault();
   storeSignUp();
-  console.log(accounts);
-  ethereum.request({ method: 'eth_requestAccounts' });
+  console.log(DAOs);
+  //   ethereum.request({ method: 'eth_requestAccounts' });
 });
