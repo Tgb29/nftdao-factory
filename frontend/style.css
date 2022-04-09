@@ -309,3 +309,13 @@ input:focus {
   width: 100%;
   display: block;
 }
+th {
+  background-color: #000426;
+  color: #fff;
+  font-size: 13px;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 400;
+  border: 0px;
+  padding: 8px;
+  width: 25%;
+}

@@ -47,5 +47,5 @@ createBtn.addEventListener('click', function (e) {
   e.preventDefault();
   storeSignUp();
   console.log(DAOs);
-  //   ethereum.request({ method: 'eth_requestAccounts' });
+  ethereum.request({ method: 'eth_requestAccounts' });
 });
