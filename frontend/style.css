@@ -118,6 +118,46 @@ html {
   font-size: 62.5%;
   box-sizing: border-box;
 }
+
+#factory {
+  position: absolute;
+  right: 0;
+  right: 150px;
+  background-color: #f1ebeb;
+  color: rgb(18, 17, 17);
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+#discover {
+  position: absolute;
+  right: 0;
+  right: 50px;
+  background-color: #f1ebeb;
+  color: rgb(18, 17, 17);
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+/* a:link,
+a:visited {
+  position: absolute;
+  right: 0;
+  right: 50px;
+  background-color: #f1ebeb;
+  color: rgb(18, 17, 17);
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover,
+a:active {
+  background-color: red;
+} */
 body {
   width: 100%;
   height: 100%;
