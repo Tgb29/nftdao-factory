@@ -1,0 +1,48 @@
+[
+    {
+        "inputs": [],
+        "name": "allNFTDAOs",
+        "outputs": [
+            {
+                "internalType": "contract NFTDAO[]",
+                "name": "",
+                "type": "address[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_name",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_symbol",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_maxSupply",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_totalVotesThreshold",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_proposalThreshold",
+                "type": "uint256"
+            }
+        ],
+        "name": "createNFTDAO",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }
+]
