@@ -11,13 +11,43 @@
 
     <link rel="stylesheet" href="style.css" />
     <title>DAOdash</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js"
+      integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" defer>
+      window.addEventListener("load", function () {
+        if (typeof web3 !== "undefined") {
+          console.log("Web3 Detected! ");
+          window.web3 = new Web3(web3.currentProvider);
+        } else {
+          console.log("No Web3 Detected... using HTTP Provider");
+          window.web3 = new Web3(
+            new Web3.providers.HttpProvider(
+              "https://mainnet.infura.io/<APIKEY>"
+            )
+          );
+        }
+      });
+      async function getAccount() {
+        const accounts = await ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        var account = accounts[0];
+        localStorage.setItem("account", account);
+        console.log(account);
+        return account;
+      }
+    </script>
   </head>
   <body>
     <!-- TOP NAVIGATION -->
     <nav>
       <a href="/index.html" class="button-link" id="factory">Create</a>
       <a href="/discover.html" class="button-link" id="discover">Discover</a>
-      <a href="/manage.html" class="button-link" id="manage"> Manage </a>
+      <!-- <a href="/manage.html" class="button-link" id="manage"> Manage </a> -->
+      <button type="button" onClick="getAccount();" id="manage">Connect</button>
     </nav>
 
     <!-- Main Application -->
@@ -31,6 +61,7 @@
     <table id="DAOdisplay" class="content-table">
       <thead>
         <tr>
+          <th></th>
           <th>Collection</th>
           <th>Symbol</th>
           <th>Supply</th>
@@ -40,33 +71,6 @@
         </tr>
       </thead>
     </table>
-
-    <!-- Page State Toggle
-    <div class="container">
-      <h2 id="question">Which would you like to submit:</h2>
-      <ul>
-        <li>
-          <input type="radio" id="proposal" name="selector" value="createProposal">
-          <label for="proposal">Proposal</label>
-          
-          <div class="check"></div>
-        </li>
-        
-        <li>
-          <input type="radio" id="vote" name="selector" value="userVote">
-          <label for="vote">Vote</label>
-          
-          <div class="check"><div class="inside"></div></div>
-        </li>
-        <button  class="btn btn-primary btn-block btn-large" id="sub">
-            Submit
-          </button>
-    </div> -->
-    <!-- <br />
-    <h2 id="heading">List of NFT Collections</h2>
-    <select class="input_field" name="address" id="addres"></select>
-    <br /><br /> -->
     <script src="discover.js"></script>
-    <a href="proposal.html"></a>
   </body>
 </html>

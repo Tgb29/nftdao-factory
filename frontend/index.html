@@ -12,13 +12,165 @@
 
     <link rel="stylesheet" href="style.css" />
     <title>DAO Factory</title>
+
+    <script
+      src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js"
+      integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" defer>
+      window.addEventListener("load", function () {
+        if (typeof web3 !== "undefined") {
+          console.log("Web3 Detected! ");
+          window.web3 = new Web3(web3.currentProvider);
+        } else {
+          console.log("No Web3 Detected... using HTTP Provider");
+          window.web3 = new Web3(
+            new Web3.providers.HttpProvider(
+              "https://mainnet.infura.io/<APIKEY>"
+            )
+          );
+        }
+      });
+      async function getAccount() {
+        const accounts = await ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        var account = accounts[0];
+        localStorage.setItem("account", account);
+        console.log(account);
+        return account;
+      }
+
+      const abi = [
+        {
+          inputs: [],
+          name: "allNFTDAOs",
+          outputs: [
+            {
+              internalType: "contract NFTDAO[]",
+              name: "",
+              type: "address[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "_name",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_symbol",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "_maxSupply",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_totalVotesThreshold",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_proposalThreshold",
+              type: "uint256",
+            },
+          ],
+          name: "createNFTDAO",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ];
+      const factoryAddress = "0x9417CC87002627605075F4BDbab5B85b47c90e1D";
+
+      function sendMethodFactory(contract) {
+        return function sendMethod(methodName, args, verb = "send", callback) {
+          contract.methods[methodName](...args).estimateGas({}, (err, gas) => {
+            const result = contract.methods[methodName](...args)[verb]({ gas });
+            if (callback) {
+              result.then(callback);
+            }
+          });
+        };
+      }
+
+      function factoryContract(callback) {
+        let _account = localStorage.getItem("account");
+        const contract = new web3.eth.Contract(abi, factoryAddress, {
+          from: _account,
+        });
+        const sendMethod = sendMethodFactory(contract);
+        callback(contract, sendMethod);
+      }
+      function getBalance() {
+        var address, wei, balance;
+        address = document.getElementById("address").value;
+        try {
+          web3.eth.getBalance(address, function (error, wei) {
+            if (!error) {
+              var balance = web3.fromWei(wei, "ether");
+              document.getElementById("output").innerHTML = balance + " ETH";
+            }
+          });
+        } catch (err) {
+          document.getElementById("output").innerHTML = err;
+        }
+      }
+      function createNFTDAO() {
+        storeSignUp();
+        factoryContract((_, sendMethod) => {
+          sendMethod("createNFTDAO", [
+            localStorage.getItem("name"),
+            localStorage.getItem("symbol"),
+            localStorage.getItem("total"),
+            localStorage.getItem("votethreshold"),
+            localStorage.getItem("proposerthreshold"),
+          ]);
+        });
+      }
+      function storeSignUp() {
+        const inputNameCollection = document.getElementById("collection");
+        const inputSymbol = document.getElementById("symbol");
+        const inputTotalSupply = document.getElementById("supply");
+        const inputPercVote = document.getElementById("passingPercent");
+        const inputNFTs = document.getElementById("topropose");
+        let newCollection = [
+          inputNameCollection.value,
+          inputSymbol.value,
+          inputTotalSupply.value,
+          inputPercVote.value,
+          inputNFTs.value,
+        ];
+
+        localStorage.setItem("name", inputNameCollection.value);
+        localStorage.setItem("symbol", inputSymbol.value);
+        localStorage.setItem("total", inputTotalSupply.value);
+        localStorage.setItem("votethreshold", inputPercVote.value);
+        localStorage.setItem("proposerthreshold", inputNFTs.value);
+
+        let _name = localStorage.getItem("name");
+        console.log(_name);
+        return newCollection;
+      }
+    </script>
   </head>
+
   <body>
     <!-- TOP NAVIGATION -->
     <nav>
       <a href="/index.html" class="button-link" id="factory">Create</a>
       <a href="/discover.html" class="button-link" id="discover">Discover</a>
-      <a href="/manage.html" class="button-link" id="manage"> Manage </a>
+      <!-- <a href="/manage.html" class="button-link" id="manage"> Manage </a> -->
+      <button type="button" onClick="getAccount();" id="manage">Connect</button>
     </nav>
     <!-- Main Application -->
     <main class="app">
@@ -59,29 +211,7 @@
             />
             <small></small>
           </div>
-          <h2>NFT Meta Data</h2>
-          <div class="field">
-            <label for="description"></label>
-            <input
-              type="text"
-              id="description"
-              name="description"
-              placeholder="Description of NFT Collection *"
-              required="required"
-            />
-            <small></small>
-          </div>
-          <div class="field">
-            <label for="nftimage"></label>
-            <input
-              type="text"
-              id="imageurl"
-              name="imageurl"
-              placeholder="NFT Image Url *"
-              required="required"
-            />
-            <small></small>
-          </div>
+
           <h2>DAO Details</h2>
           <h3>Percentage of Votes needed to Pass Proposal</h3>
           <div class="field">
@@ -109,17 +239,18 @@
           </div>
           <div class="field">
             <button
-              type="submit"
+              type="button"
+              onClick="createNFTDAO();"
               class="btn btn-primary btn-block btn-large"
-              id="createDao"
             >
-              Create DAO
+              Create NFTDAO
             </button>
+
             <small></small>
           </div>
         </form>
       </div>
     </main>
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
   </body>
 </html>
